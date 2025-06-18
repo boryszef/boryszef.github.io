@@ -43,7 +43,7 @@ sudo dd if=output/images/sdcard.img of=/dev/sdf
 
 BBB operates on 3.3V, make sure FTDI is set the same way. Connect GND to PIN 1, TX to PIN 4 and RX to PIN 5:
 
-![Connecting BBB to PC over FTDI](bbb-over-ftdi.png)
+![Connecting BBB to PC over FTDI](/media/bbb-over-ftdi.png)
 
 Use `minicom` or `screen` to connect:
 ```console

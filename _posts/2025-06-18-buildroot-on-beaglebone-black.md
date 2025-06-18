@@ -5,7 +5,9 @@ date:   2025-06-18 17:44:47 +0200
 categories: embedded beaglebone buildroot
 ---
 
-Tested with Buildroot version 2025.02.3, which can be obtained from [here](https://buildroot.org/downloads/buildroot-2025.02.3.tar.xz).
+Tested with Buildroot version 2025.02.3, which can be obtained from [here](https://buildroot.org/downloads/buildroot-2025.02.3.tar.xz) and a Beaglebone Black.
+
+# Building it
 
 1. Download source code:
 ```console
@@ -33,4 +35,17 @@ make -j10
 5. Go to `output/images` and copy the SD card image:
 ```console
 sudo dd if=output/images/sdcard.img of=/dev/sdf
+```
+
+6. Plug the card into SD slot of your BBB, power on and check the UART interface.
+
+# How to access the UART
+
+BBB operates on 3.3V, make sure FTDI is set the same way. Connect GND to PIN 1, TX to PIN 4 and RX to PIN 5:
+
+![Connecting BBB to PC over FTDI](bbb-over-ftdi.png)
+
+Use `minicom` or `screen` to connect:
+```console
+sudo screen /dev/ttyUSB0 115200
 ```

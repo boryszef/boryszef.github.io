@@ -7,8 +7,8 @@
 <meta name="generator" content="Jekyll v3.10.0" />
 <meta property="og:title" content="Making a slim linux image for Beaglebone Black using Buildroot" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Tested with Buildroot version 2025.02.3, which can be obtained from here." />
-<meta property="og:description" content="Tested with Buildroot version 2025.02.3, which can be obtained from here." />
+<meta name="description" content="Tested with Buildroot version 2025.02.3, which can be obtained from here and a Beaglebone Black." />
+<meta property="og:description" content="Tested with Buildroot version 2025.02.3, which can be obtained from here and a Beaglebone Black." />
 <link rel="canonical" href="https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html" />
 <meta property="og:url" content="https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html" />
 <meta property="og:site_name" content="Borys Szefczyk" />
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Making a slim linux image for Beaglebone Black using Buildroot" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-06-18T17:44:47+02:00","datePublished":"2025-06-18T17:44:47+02:00","description":"Tested with Buildroot version 2025.02.3, which can be obtained from here.","headline":"Making a slim linux image for Beaglebone Black using Buildroot","mainEntityOfPage":{"@type":"WebPage","@id":"https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html"},"url":"https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-06-18T17:44:47+02:00","datePublished":"2025-06-18T17:44:47+02:00","description":"Tested with Buildroot version 2025.02.3, which can be obtained from here and a Beaglebone Black.","headline":"Making a slim linux image for Beaglebone Black using Buildroot","mainEntityOfPage":{"@type":"WebPage","@id":"https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html"},"url":"https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://boryszef.github.io/feed.xml" title="Borys Szefczyk" /></head>
 <body><header class="site-header" role="banner">
@@ -47,7 +47,9 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>Tested with Buildroot version 2025.02.3, which can be obtained from <a href="https://buildroot.org/downloads/buildroot-2025.02.3.tar.xz">here</a>.</p>
+    <p>Tested with Buildroot version 2025.02.3, which can be obtained from <a href="https://buildroot.org/downloads/buildroot-2025.02.3.tar.xz">here</a> and a Beaglebone Black.</p>
+
+<h1 id="building-it">Building it</h1>
 
 <ol>
   <li>Download source code:
@@ -73,7 +75,18 @@ make menuconfig
     <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo dd if=output/images/sdcard.img of=/dev/sdf
 </span></code></pre></div>    </div>
   </li>
+  <li>Plug the card into SD slot of your BBB, power on and check the UART interface.</li>
 </ol>
+
+<h1 id="how-to-access-the-uart">How to access the UART</h1>
+
+<p>BBB operates on 3.3V, make sure FTDI is set the same way. Connect GND to PIN 1, TX to PIN 4 and RX to PIN 5:</p>
+
+<p><img src="bbb-over-ftdi.png" alt="Connecting BBB to PC over FTDI" /></p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">minicom</code> or <code class="language-plaintext highlighter-rouge">screen</code> to connect:</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo screen /dev/ttyUSB0 115200
+</span></code></pre></div></div>
 
   </div><a class="u-url" href="/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html" hidden></a>
 </article>

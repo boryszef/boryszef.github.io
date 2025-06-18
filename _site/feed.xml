@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://boryszef.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://boryszef.github.io/" rel="alternate" type="text/html" /><updated>2025-06-18T19:41:32+02:00</updated><id>https://boryszef.github.io/feed.xml</id><title type="html">Borys Szefczyk</title><subtitle>Bunch of random notes, memos and how-tos on various topics.</subtitle><entry><title type="html">Making a slim linux image for Beaglebone Black using Buildroot</title><link href="https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html" rel="alternate" type="text/html" title="Making a slim linux image for Beaglebone Black using Buildroot" /><published>2025-06-18T17:44:47+02:00</published><updated>2025-06-18T17:44:47+02:00</updated><id>https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black</id><content type="html" xml:base="https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html"><![CDATA[<p>Tested with Buildroot version 2025.02.3, which can be obtained from <a href="https://buildroot.org/downloads/buildroot-2025.02.3.tar.xz">here</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://boryszef.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://boryszef.github.io/" rel="alternate" type="text/html" /><updated>2025-06-18T20:07:40+02:00</updated><id>https://boryszef.github.io/feed.xml</id><title type="html">Borys Szefczyk</title><subtitle>Bunch of random notes, memos and how-tos on various topics.</subtitle><entry><title type="html">Making a slim linux image for Beaglebone Black using Buildroot</title><link href="https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html" rel="alternate" type="text/html" title="Making a slim linux image for Beaglebone Black using Buildroot" /><published>2025-06-18T17:44:47+02:00</published><updated>2025-06-18T17:44:47+02:00</updated><id>https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black</id><content type="html" xml:base="https://boryszef.github.io/embedded/beaglebone/buildroot/2025/06/18/buildroot-on-beaglebone-black.html"><![CDATA[<p>Tested with Buildroot version 2025.02.3, which can be obtained from <a href="https://buildroot.org/downloads/buildroot-2025.02.3.tar.xz">here</a> and a Beaglebone Black.</p>
+
+<h1 id="building-it">Building it</h1>
 
 <ol>
   <li>Download source code:
@@ -24,4 +26,15 @@ make menuconfig
     <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo dd if=output/images/sdcard.img of=/dev/sdf
 </span></code></pre></div>    </div>
   </li>
-</ol>]]></content><author><name></name></author><category term="embedded" /><category term="beaglebone" /><category term="buildroot" /><summary type="html"><![CDATA[Tested with Buildroot version 2025.02.3, which can be obtained from here.]]></summary></entry></feed>
+  <li>Plug the card into SD slot of your BBB, power on and check the UART interface.</li>
+</ol>
+
+<h1 id="how-to-access-the-uart">How to access the UART</h1>
+
+<p>BBB operates on 3.3V, make sure FTDI is set the same way. Connect GND to PIN 1, TX to PIN 4 and RX to PIN 5:</p>
+
+<p><img src="bbb-over-ftdi.png" alt="Connecting BBB to PC over FTDI" /></p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">minicom</code> or <code class="language-plaintext highlighter-rouge">screen</code> to connect:</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">sudo screen /dev/ttyUSB0 115200
+</span></code></pre></div></div>]]></content><author><name></name></author><category term="embedded" /><category term="beaglebone" /><category term="buildroot" /><summary type="html"><![CDATA[Tested with Buildroot version 2025.02.3, which can be obtained from here and a Beaglebone Black.]]></summary></entry></feed>
